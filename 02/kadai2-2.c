@@ -2,40 +2,28 @@
 
 int main(void){
 
-  double X1,X2,r,K;
-  int t;
+  double X,XX,r,K;
+  int t=0;
   FILE *fp;
 
-  X1=10.0;
   r=1.0;
   K=100.0;
-  t=0;
 
   fp=fopen("output.dat","w");
-  if(fp==NULL){
-    printf("error\n");
-  }
 
   for(r=1.0;r<=3.0;r+=0.001){
-
-    //fprintf(fp,"r=%.1f\n",r);
-
-    X1=10;
-
+    X=10.0;
     for(t=0;t<300;t++){
-      X2=X1+r*(1.0-X1/K)*X1;
+      XX=X+r*(1.0-X/K)*X;
       if(t>=250){
-        fprintf(fp,"%.3f,%.1f\n",r,X2);
+        fprintf(fp,"%.3f,%.1f\n",r,XX);
       }
-      X1=X2;
+      X=XX;
     }
-
   }
 
   fclose(fp);
 
   printf("COMPLETE\n");
-
   return 0;
-
 }

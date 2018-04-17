@@ -2,11 +2,11 @@
 
 int main(void){
 
-  double X1,X2,r,K;
+  double X1,X2,r,K=100.0;
   int t;
   FILE *fp;
 
-  r=3.0;
+  r=3.0;//←ここを変化させれば好きなrについての表を得られる
   K=100.0;
   t=0;
 
