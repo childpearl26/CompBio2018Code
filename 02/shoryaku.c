@@ -2,31 +2,22 @@
 
 int main(void){
 
-  double X1,X2,r,K=100.0;
+  double X=10,XX,r,K=100.0;
   int t;
   FILE *fp;
 
   r=3.0;//←ここを変化させれば好きなrについての表を得られる
-  K=100.0;
-  t=0;
 
   fp=fopen("output.dat","w");
-  if(fp==NULL){
-    printf("error\n");
-  }
-
-  X1=10.0;
-
   for(t=0;t<50;t++){
-    X2=X1+r*(1.0-X1/K)*X1;
-    fprintf(fp,"%.1f\n",X2);
-    X1=X2;
+    XX=X+r*(1.0-X/K)*X;
+    fprintf(fp,"%.1f\n",XX);
+    X=XX;
   }
 
   fclose(fp);
 
   printf("COMPLETE\n");
-
   return 0;
 
 }
