@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int main(){
+  int m,n;
+  for(n=0;;n++){
+    printf("よつまてる雑魚おる？？\n");
+    printf("  よつまてる...1\n");
+    printf("  酔ってない...2\n");
+    scanf("%d",&m);
+    if(m==1){
+      printf("徒歩で帰りま〜すwwww\n");
+      break;
+    }
+    else{
+      printf("ha?\n");
+      scanf("%d",&n);
+    }
+  }
+  return 0;
+}

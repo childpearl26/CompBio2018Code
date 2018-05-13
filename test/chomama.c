@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main(){
+  int m,i,j;
+  printf("だって私、そんなに--\n");
+  printf("チョロくない！！\n");
+  printf("How many チョロくない?:");
+  scanf("%d",&m);
+  for(i=0;i<m;i++){
+    printf("ちょまま");
+    for(j=0;j<i;j++){
+      printf("ま");
+    }
+    printf("\n");
+  }
+  return 0;
+}
