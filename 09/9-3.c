@@ -7,12 +7,12 @@ int lifegame(int cell1,int cell2,int cell3,
 
 int main(void){
 
-  int i,j;
+  int i,j,t;
   int cell[N][N];
   int tempcell[N][N];
 
   FILE *infile,*outfile;
-  infile=fopen("CGL.csv","r");
+  infile=fopen("CGLinput.csv","r");
 
   for(i=0;i<N;i++){
     for(j=0;j<N;j++){
@@ -34,48 +34,46 @@ int main(void){
     }
   }
 
-  //実行
-  for(i=1;i<N-1;i++){
-    for(j=1;j<N-1;j++){
-      tempcell[i][j]=lifegame(cell[i-1][j-1],cell[i-1][j],cell[i-1][j+1],
-        cell[i][j-1],cell[i][j],cell[i][j+1],
-        cell[i+1][j-1],cell[i+1][j],cell[i+1][j+1]);
-    }
-  }
+  outfile=fopen("CGL.csv","w");
 
-  outfile=fopen("CGL2.csv","w");
+  //100回実行
+  for(t=0;t<100;t++){
 
-  //テスト
-
-  for(i=0;i<N;i++){
-    for(j=0;j<N;j++){
-      fprintf(outfile,"%d",cell[i][j]);
-      if(j<N){
-        fprintf(outfile,",");
-      }
-    }
-    fprintf(outfile,"\n");
-  }
-
-  fprintf(outfile,"\n");
-
-  //出力
-
-  for(i=0;i<N;i++){
-    for(j=0;j<N;j++){
-      fprintf(outfile,"%d",tempcell[i][j]);
-      if(j<N){
-        fprintf(outfile,",");
-      }
-    }
-    fprintf(outfile,"\n");
-  }
+　  //実行
+　  for(i=1;i<N-1;i++){
+　    for(j=1;j<N-1;j++){
+　      tempcell[i][j]=lifegame(cell[i-1][j-1],cell[i-1][j],cell[i-1][j+1],
+　        cell[i][j-1],cell[i][j],cell[i][j+1],
+　        cell[i+1][j-1],cell[i+1][j],cell[i+1][j+1]);
+　    }
+　  }
+　
+　  //出力
+　
+　  for(i=0;i<N;i++){
+　    for(j=0;j<N;j++){
+　      fprintf(outfile,"%d",tempcell[i][j]);
+　      if(j<N){
+　        fprintf(outfile,",");
+　      }
+　    }
+　    fprintf(outfile,"\n");
+　  }
+　
+　  for(i=0;i<N;i++){
+　    for(j=0;j<N;j++){
+　      cell[i][j]=tempcell[i][j];
+　    }
+　  }
+　
+　}　
 
   fclose(outfile);
 
   return 0;
 }
 
+//関数の定義
 int lifegame(int cell1,int cell2,int cell3,
   int cell4,int cell5,int cell6,
   int cell7,int cell8,int cell9){
