@@ -15,7 +15,11 @@ int main(void){
     tempcell[i]=0;
   }
 
-  cell[50]=1;
+  for(i=0;i<100;i++){
+    if(i%2==0){
+      cell[i]=1;
+    }
+  }
   for(i=0;i<100;i++){
     fprintf(fp,"%d",cell[i]);
     if(i!=99){
