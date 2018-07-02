@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
 
 int main(){
   int i,j;
@@ -8,12 +10,14 @@ int main(){
   double utemp[100][100],vtemp[100][100];
 
   double Du=0.4;
-  double Dv=0.4;
+  double Dv=1.4;
 
   FILE *fpu,*fpv;
 
   fpu=fopen("11-2u.csv","w");
   fpv=fopen("11-2v.csv","w");
+
+  srand(time(NULL));
 
   //初期化
   for(i=0;i<100;i++){
@@ -25,8 +29,9 @@ int main(){
 
   for(i=0;i<100;i++){
     for(j=0;j<100;j++){
-      if((i%2==0)&&(j%2==0)){
-        u[i][j]=1.1;
+      if(rand()%2==0){
+        u[i][j]=1.01;
+        v[i][j]=1.01;
       }
     }
   }
